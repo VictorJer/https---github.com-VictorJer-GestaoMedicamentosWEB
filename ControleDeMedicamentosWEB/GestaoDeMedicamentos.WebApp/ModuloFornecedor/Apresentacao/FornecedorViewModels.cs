@@ -35,11 +35,11 @@ public record EditarFornecedorViewModel(
     string Telefone,
 
     [Required(ErrorMessage = "O campo \"Nome do Responsável\" deve ser preenchido.")]
-    [StringLength(13, ErrorMessage = "O campo \"CNPJ\" deve conter 13 caracteres.")]
+    [StringLength(14, ErrorMessage = "O campo \"CNPJ\" deve conter 13 caracteres.")]
     string CNPJ
 );
 
-public record ExcluirAmigoViewModel(
+public record ExcluirFornecedorViewModel(
     string Id,
     string Nome,
     string Telefone,

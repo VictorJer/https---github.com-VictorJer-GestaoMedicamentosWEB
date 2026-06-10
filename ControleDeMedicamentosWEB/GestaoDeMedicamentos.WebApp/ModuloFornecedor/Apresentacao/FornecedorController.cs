@@ -35,5 +35,60 @@ public class FornecedorController : Controller
         return View(listarVms);
     }
 
+    [HttpGet]
+    public ActionResult Cadastrar()
+    {
+        CadastrarFornecedorViewModel cadastarVm = new CadastrarFornecedorViewModel(
+            string.Empty,
+            string.Empty,
+            string.Empty
+        );
+
+        return View(cadastarVm);
+    }
+
+    [HttpPost]
+    public ActionResult Cadastrar(CadastrarFornecedorViewModel cadastarVm)
+    {
+        if (!ModelState.IsValid)
+            return View(cadastarVm);
+
+        Fornecedor novoFornecedor = new Fornecedor(
+            cadastarVm.Nome,
+            cadastarVm.Telefone,
+            cadastarVm.CNPJ
+        );
+
+        repositorioFornecedor.Cadastrar(novoFornecedor);
+
+        return RedirectToAction(nameof(Listar));
+    }
+
+    [HttpGet]
+    public ActionResult Excluir(string id)
+    {
+        Fornecedor? fornecedor = repositorioFornecedor.SelecionarPorId(id);
+
+        if (fornecedor == null)
+            return RedirectToAction(nameof(Listar));
+
+        ExcluirFornecedorViewModel excluiVm = new ExcluirFornecedorViewModel(
+            id,
+            fornecedor.Nome,
+            fornecedor.Telefone,
+            fornecedor.CNPJ
+        );
+
+        return View(excluiVm);
+    }
+
+    [HttpPost]
+    public ActionResult Excluir(ExcluirFornecedorViewModel excluirVm)
+    {
+        repositorioFornecedor.Excluir(excluirVm.Id);
+
+        return RedirectToAction(nameof(Listar));
+    }
+
 
 }
