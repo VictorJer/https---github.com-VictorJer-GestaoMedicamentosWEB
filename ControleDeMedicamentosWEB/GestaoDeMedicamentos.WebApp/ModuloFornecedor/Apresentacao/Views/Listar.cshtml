@@ -5,47 +5,53 @@
 @model List<ListarFornecedoresViewModel>
 
 
-<a class="btn btn-outline-primary rounded-pill px-4 mb-3" asp-action="Cadastrar">Cadastrar Novo</a>
+<body>
+    <a class="btn btn-outline-primary rounded-pill px-4 mb-3" asp-action="Cadastrar">Cadastrar Novo</a>
 
+    @if (TempData["MensagemErro"] != null)
+    {
+        <div class="alert alert-danger">
+            @TempData["MensagemErro"]
+        </div>
+    }
 
-@if (Model.Count == 0)
-{
-    <div class="alert alert-primary border-start border-primary border-4 rounded-3" role="alert">
-        Nenhum amigo cadastrado.
-    </div>
-}
-else
-{
-    <div class="table-responsive">
-        <table class="table table-hover table-bordered align-middle">
-            <thead class="">
-                <tr>
-                    <th>ID</th>
-                    <th>Nome</th>
-                    <th>CNPJ</th>
-                    <th>Telefone</th>
-                    <th class="text-center" style="width: 1%; white-space: nowrap;">açoes</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach (ListarFornecedoresViewModel a in Model)
-                {
-                    <tr>
-                        <td>@a.Id</td>
-                        <td>@a.Nome</td>
-                        <td>@a.CNPJ</td>
-                        <td>@a.Telefone</td>
-                        <td>
-                            <div class="d-flex gap-2">
-                                <a class="btn btn-outline-primary btn-sm rounded-pill px-3" asp-action="Editar"
-                                   asp-route-id="@a.Id">Editar</a>
-                                <a class="btn btn-outline-primary btn-sm rounded-pill px-3" asp-action="Excluir"
-                                   asp-route-id="@a.Id">Excluir</a>
+    @if (@Model.Count == 0)
+    {
+        <div class="alert alert-primary border-start border-primary border-2 rounded-3" role="alert">
+            Nenhuma Fornecedor Cadastrado.
+        </div>
+    }
+    else
+    {
+        <div class="row g-3">
+            @foreach (ListarFornecedoresViewModel item in Model)
+            {
+                <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+                    <div class="card shadow-sm h-100">
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <h5 class="card-title">@item.Nome</h5>
+                                <p class="card-text mb-2">
+                                    <strong>ID:</strong> @item.Id
+                                </p>
                             </div>
-                        </td>
-                    </tr>
-                }
-            </tbody>
-        </table>
-    </div>
-}
+                            <div class="d-flex align-items-center">
+                                <strong class="me-2">Telefone:</strong>
+                                <span class="ms-2">@item.Telefone</span>
+                            </div>
+                            <div class="d-flex align-items-center">
+                                <strong class="me-2">CNPJ:</strong>
+                                <span class="ms-2">@item.CNPJ</span>
+                            </div>
+                            <a class="btn btn-outline-primary btn-sm rounded-pill px-3 mt-3 p-2" asp-action="Editar"
+                               asp-route-id="@item.Id">Editar</a>
+                            <a class="btn btn-outline-primary btn-sm rounded-pill px-3 mt-3 p-2" asp-action="Excluir"
+                               asp-route-id="@item.Id">Excluir</a>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    }
+</body>
+

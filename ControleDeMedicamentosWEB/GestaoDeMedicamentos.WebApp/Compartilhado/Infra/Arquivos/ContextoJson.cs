@@ -8,6 +8,7 @@ public sealed class ContextoJson
     private readonly string caminhoArquivo;
 
     public List<Fornecedor> Fornecedor { get; set; } = new();
+    public List<Medicamento> Medicamento { get; set; } = new();
 
     public ContextoJson()
     {
@@ -51,6 +52,7 @@ public sealed class ContextoJson
             return;
 
         Fornecedor = contextoSalvo.Fornecedor;
+        Medicamento = contextoSalvo.Medicamento;
 
     }
 }
