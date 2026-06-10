@@ -65,6 +65,41 @@ public class FornecedorController : Controller
     }
 
     [HttpGet]
+    public ActionResult Editar(string id)
+    {
+        Fornecedor? fornecedor = repositorioFornecedor.SelecionarPorId(id);
+
+        if (fornecedor == null)
+            return RedirectToAction(nameof(Listar));
+
+        EditarFornecedorViewModel editarVm = new EditarFornecedorViewModel(
+            id,
+            fornecedor.Nome,
+            fornecedor.Telefone,
+            fornecedor.CNPJ
+        );
+
+        return View(editarVm);
+    }
+
+    [HttpPost]
+    public ActionResult Editar(EditarFornecedorViewModel editarVm)
+    {
+        if (!ModelState.IsValid)
+            return View(editarVm);
+
+        Fornecedor fornecedorAtualizado = new Fornecedor(
+            editarVm.Nome,
+            editarVm.Telefone,
+            editarVm.CNPJ
+        );
+
+        repositorioFornecedor.Editar(editarVm.Id, fornecedorAtualizado);
+
+        return RedirectToAction(nameof(Listar));
+    }
+
+    [HttpGet]
     public ActionResult Excluir(string id)
     {
         Fornecedor? fornecedor = repositorioFornecedor.SelecionarPorId(id);
