@@ -1,3 +1,7 @@
+using GestaoDeMedicamentos.WebApp.Compartilhado.Dominio;
+using GestaoDeMedicamentos.WebApp.ModuloFornecedor.Dominio;
+using GestaoDeMedicamentos.WebApp.ModuloFornecedor.Infra;
+
 namespace GestaoDeMedicamentos.WebApp.Compartilhado.Infra.Arquivos;
 
 public static class InjecaoDependencia
@@ -13,6 +17,7 @@ public static class InjecaoDependencia
             return contextoJson;
         });
         // services.AddScoped<IRepositorioCategoria, RepositorioCategoriaEmArquivo>();
+        services.AddScoped<IRepositorioFornecedor, RepositorioFornecedorEmArquivo>();
 
     }
 }

@@ -7,6 +7,8 @@ public sealed class ContextoJson
 {
     private readonly string caminhoArquivo;
 
+    public List<Fornecedor> Fornecedor { get; set; } = new();
+
     public ContextoJson()
     {
         string caminhoAppData = Environment
@@ -47,6 +49,8 @@ public sealed class ContextoJson
 
         if (contextoSalvo == null)
             return;
+
+        Fornecedor = contextoSalvo.Fornecedor;
 
     }
 }
