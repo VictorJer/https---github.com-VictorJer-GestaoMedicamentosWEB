@@ -9,6 +9,7 @@ public sealed class ContextoJson
 
     public List<Fornecedor> Fornecedor { get; set; } = new();
     public List<Medicamento> Medicamento { get; set; } = new();
+    public List<Paciente> Paciente { get; set; } = new();
 
     public ContextoJson()
     {
@@ -53,6 +54,8 @@ public sealed class ContextoJson
 
         Fornecedor = contextoSalvo.Fornecedor;
         Medicamento = contextoSalvo.Medicamento;
+        Paciente = contextoSalvo.Paciente;
+
 
     }
 }
