@@ -3,7 +3,7 @@
     ViewBag.Titulo = "Exclusão de Fornecedor";
 }
 
-@model ExcluirFornecedorViewModel;
+@model ExcluirMedicamentoViewModel;
 
 <form class="card border-primary-subtle shadow-sm mx-auto p-4" style="max-width: 620px;" asp-action="Excluir"
       asp-route-id="@Model.Id" method="post">
@@ -17,13 +17,14 @@
     </div>
 
     <div class="mb-3">
-        <label asp-for="Telefone" class="form-label fw-semibold text-primary text-uppercase small">Telefone</label>
-        <input asp-for="Telefone" type="text" class="form-control" disabled>
+        <label asp-for="Descricao" class="form-label fw-semibold text-primary text-uppercase small">Descricao</label>
+        <input asp-for="Descricao" type="text" class="form-control" disabled>
     </div>
 
     <div class="mb-3">
-        <label asp-for="CNPJ" class="form-label fw-semibold text-primary text-uppercase small">CNPJ</label>
-        <input asp-for="CNPJ" type="text" class="form-control" disabled>
+        <label asp-for="QuantidadeEmEstoque"
+               class="form-label fw-semibold text-primary text-uppercase small">QuantidadeEmEstoque</label>
+        <input asp-for="QuantidadeEmEstoque" type="text" class="form-control" disabled>
     </div>
 
 

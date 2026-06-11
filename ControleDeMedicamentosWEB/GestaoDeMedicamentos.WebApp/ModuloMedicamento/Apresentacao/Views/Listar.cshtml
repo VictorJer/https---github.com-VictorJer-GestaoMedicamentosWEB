@@ -1,12 +1,13 @@
 @{
     Layout = "_Layout";
-    ViewBag.Titulo = "Listagem de Fornecedores";
+    ViewBag.Titulo = "Listagem de Medicamentos";
 }
-@model List<ListarFornecedoresViewModel>
+@model List<ListarMedicamentoViewModel>
 
 
 <body>
-    <a class="btn btn-outline-primary rounded-pill px-4 mb-3" asp-action="Cadastrar">Cadastrar Novo</a>
+    <a class="btn btn-outline-primary rounded-pill px-4 mb-3" asp-controller="Medicamento"
+       asp-action="Cadastrar">Cadastrar Novo</a>
 
     @if (TempData["MensagemErro"] != null)
     {
@@ -18,13 +19,13 @@
     @if (@Model.Count == 0)
     {
         <div class="alert alert-primary border-start border-primary border-2 rounded-3" role="alert">
-            Nenhuma Fornecedor Cadastrado.
+            Nenhuma Medicamento Cadastrado.
         </div>
     }
     else
     {
         <div class="row g-3">
-            @foreach (ListarFornecedoresViewModel item in Model)
+            @foreach (ListarMedicamentoViewModel item in Model)
             {
                 <div class="col-12 col-sm-6 col-md-4 col-lg-3">
                     <div class="card shadow-sm h-100">
@@ -36,12 +37,20 @@
                                 </p>
                             </div>
                             <div class="d-flex align-items-center">
-                                <strong class="me-2">Telefone:</strong>
-                                <span class="ms-2">@item.Telefone</span>
+                                <strong class="me-2">Descricao:</strong>
+                                <span class="ms-2">@item.Descricao</span>
                             </div>
                             <div class="d-flex align-items-center">
-                                <strong class="me-2">CNPJ:</strong>
-                                <span class="ms-2">@item.CNPJ</span>
+                                <strong class="me-2">QuantidadeEmEstoque:</strong>
+                                <span class="ms-2">@item.QuantidadeEmEstoque</span>
+                            </div>
+                            <div class="d-flex align-items-center">
+                                <strong class="me-2">Descricao:</strong>
+                                <span class="ms-2">@item.Descricao</span>
+                            </div>
+                            <div class="d-flex align-items-center">
+                                <strong class="me-2">Fornecedor:</strong>
+                                <span class="ms-2">@item.Fornecedor.Nome</span>
                             </div>
                             <a class="btn btn-outline-primary btn-sm rounded-pill px-3 mt-3 p-2" asp-action="Editar"
                                asp-route-id="@item.Id">Editar</a>
