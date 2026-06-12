@@ -3,6 +3,8 @@ using GestaoDeMedicamentos.WebApp.ModuloFornecedor.Dominio;
 using GestaoDeMedicamentos.WebApp.ModuloFornecedor.Infra;
 using GestaoDeMedicamentos.WebApp.ModuloMedicamento.Dominio;
 using GestaoDeMedicamentos.WebApp.ModuloMedicamento.Infra;
+using GestaoDeMedicamentos.WebApp.ModuloPaciente.Dominio;
+using GestaoDeMedicamentos.WebApp.ModuloPaciente.Infra;
 
 namespace GestaoDeMedicamentos.WebApp.Compartilhado.Infra.Arquivos;
 
@@ -21,6 +23,7 @@ public static class InjecaoDependencia
         // services.AddScoped<IRepositorioCategoria, RepositorioCategoriaEmArquivo>();
         services.AddScoped<IRepositorioFornecedor, RepositorioFornecedorEmArquivo>();
         services.AddScoped<IRepositorioMedicamento, RepositorioMedicamentoEmArquivo>();
+        services.AddScoped<IRepositorioPaciente, RepositorioPacienteEmArquivo>();
 
     }
 }
