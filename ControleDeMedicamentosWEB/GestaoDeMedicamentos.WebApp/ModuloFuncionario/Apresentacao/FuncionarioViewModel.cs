@@ -1,17 +1,19 @@
 using System.ComponentModel.DataAnnotations;
 
-public record ListasFuncionaruioviewModel(
+namespace GestaoDeMedicamentos.WebApp.ModuloFuncionario.Apresentacao;
 
-    string id,
+public record ListarFuncionarioviewModel(
+
+    string Id,
     string Nome,
-    string telefone,
-    string cPF
+    string Telefone,
+    string CPF
 
 );
 
 public record EditaFuncionarioViewModel(
 
-    string id,
+    string Id,
 
     [Required]
     [StringLength(100, ErrorMessage = "O campo \"Nome\" deve conter entre 3 e 100 caracteres", MinimumLength = 3)]
@@ -45,9 +47,9 @@ public record CadastrarFuncionarioViewModel(
 
 public record ExcluirFuncionaruioviewModel(
 
-    string id,
+    string Id,
     string Nome,
-    string telefone,
-    string cPF
+    string Telefone,
+    string CPF
 
 );
