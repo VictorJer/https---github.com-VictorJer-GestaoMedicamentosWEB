@@ -4,7 +4,7 @@ namespace ControleDeMedicamentosWeb.WebApp.Modulos.ModuloEstoque.Dominio;
 
 [JsonPolymorphic(TypeDiscriminatorPropertyName = "$tipo")]
 [JsonDerivedType(typeof(RequisicaoEntrada), "entrada")]
-[JsonDerivedType(typeof(RequisicaoSaida), "saida")]
+// [JsonDerivedType(typeof(RequisicaoSaida), "saida")]
 public class RequisicaoBase
 {
     public Guid Id { get; set; } = Guid.CreateVersion7();
